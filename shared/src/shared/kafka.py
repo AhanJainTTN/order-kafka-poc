@@ -1,5 +1,4 @@
 import os
-from typing import Any
 
 from confluent_kafka import Consumer, Message, Producer
 

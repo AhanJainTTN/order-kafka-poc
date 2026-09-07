@@ -4,8 +4,10 @@ from sqlite3 import Connection, Row
 
 
 def get_connection(path: str) -> Connection:
-    conn = sqlite3.connect(path)
+    # Connections are shared between FastAPI handlers and background consumers.
+    conn = sqlite3.connect(path, check_same_thread=False, timeout=30)
     conn.row_factory = Row
+    conn.execute("PRAGMA journal_mode=WAL")
     return conn
 
 

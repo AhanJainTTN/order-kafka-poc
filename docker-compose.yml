@@ -16,7 +16,7 @@ services:
       - --smp 1
       - --default-log-level=info
     ports:
-      - "9092:9092"
+      - "9092:19092"
       - "9644:9644"
     healthcheck:
       test: ["CMD", "rpk", "cluster", "health"]
